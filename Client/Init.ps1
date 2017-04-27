@@ -151,6 +151,33 @@ function SetupUser ($name) {
    Add-LocalGroupMember -Group Administrators -Member $uname
 }
 
+function DisableUser($user, $Computer) {
+   $EnableUser = 512
+   $DisableUser = 2 
+
+   $ObjUser = [ADSI]”WinNT://$Computer/$user”
+   $objUser.description = “Disabled Account”
+   $objUser.userflags = $DisableUser
+   $objUser.setinfo()
+}
+
+function DisableUnwantedUsers($dtyp) {
+   # Users are enabled from start - this will disable pre-created accounts 
+   $userkind = DtypGetLong -dtyp $dtyp
+
+   $ComputerName = $env:COMPUTERNAME
+   $Computer = [adsi]"WinNT://$ComputerName"   
+   if ($userkind -ne $KASSA) {
+      DisableUser -user "Kassa" -Computer $Computer
+   } 
+   if ($userkind -ne $Order) {
+      DisableUser -user "Order" -Computer $Computer
+   }
+   if ($userkind -ne $BO) {
+      DisableUser -user "Backoffice" -Computer $Computer
+   }
+}
+
 function Create-RDP ($dtyp, $seq, $name, $json) {
    Write-Host "Creating RDP Shortcuts"
    $resWidth = 1024
@@ -334,6 +361,7 @@ $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 # OK - 
 # Users already created in image - RIP this
 #SetupUser -name $name
+DisableUnwantedUsers -dtyp $dtyp
 
 # Install printer
 # TODO
