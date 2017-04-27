@@ -19,7 +19,7 @@ $O = "O"
 $LASERSKRIVARE = "LASERSKRIVARE"
 $KVITTOSKRIVARE = "KVITTOSKRIVARE"
 
-$fpath = "C:\FDT\FDT-3pcauto\"
+$fpath = "C:\FDT\KundSetup\"
 
 # Functions ..................................................................
 function DtypGetShort ($dtyp) {

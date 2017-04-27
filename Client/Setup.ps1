@@ -50,8 +50,8 @@ function GetFileFromWeb ( $baseurl, $dst, $file ) {
 
 $typ = ValidateDTyp -dtyp $dtyp
 
-$dst = 'C:\FDT\FDT-3pcauto'
-$url = "https://raw.githubusercontent.com/nomikem/FDT-3pcauto/master"
+$dst = 'C:\FDT\KundSetup'
+$url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/master"
 $initb = "Init.bat"
 $init = "Init.ps1"
 $logon = "Logon.ps1"
@@ -63,13 +63,13 @@ GetFileFromWeb -baseurl $url -dst $dst -file $initb
 GetFileFromWeb -baseurl $url -dst $dst -file $init
 GetFileFromWeb -baseurl $url -dst $dst -file $logon
 
-$kundurl = $url+'/kund/'+$kundnr
+$kundurl = $url+'/Kund/'+$kundnr
 GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.json'
 
-$tvmsiurl = $url+'/assets/TeamViewerMSI'
+$tvmsiurl = $url+'/Client/assets/TeamViewerMSI'
 GetFileFromWeb -baseurl $tvmsiurl -dst $dst -file $tvmsi
 
-$tvassurl = $url+'/assets/TeamViewer_Host_Assignment/Win'
+$tvassurl = $url+'/Client/assets/TeamViewer_Host_Assignment/Win'
 GetFileFromWeb -baseurl $tvassurl -dst $dst -file $tvass
 
 GetFileFromWeb -baseurl $url -dst $dst -file $erif
@@ -82,4 +82,4 @@ if ($typ -eq "K" -Or $typ -eq "O") {
 
 #Invoke-Expression $dst'\'$init "-kundnr $kundnr -dtyp $typ -seq $seq"
 $argstr = "-kundnr $kundnr -dtyp $typ -seq $seq -noexit"
-Invoke-Expression "C:\FDT\FDT-3pcauto\Init.ps1 $argstr"
+Invoke-Expression $dst"\Init.ps1 $argstr"
