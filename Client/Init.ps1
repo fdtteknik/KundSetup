@@ -19,7 +19,7 @@ $O = "O"
 $LASERSKRIVARE = "LASERSKRIVARE"
 $KVITTOSKRIVARE = "KVITTOSKRIVARE"
 
-$fpath = "C:\FDT\KundSetup\"
+$fpath = "C:\FDT\KundSetup\Client\"
 
 # Functions ..................................................................
 function DtypGetShort ($dtyp) {
@@ -333,7 +333,7 @@ $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 # Skapa användare
 # OK - 
 # Users already created in image - RIP this
-SetupUser -name $name
+#SetupUser -name $name
 
 # Install printer
 # TODO

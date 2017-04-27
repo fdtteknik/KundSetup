@@ -50,7 +50,7 @@ function GetFileFromWeb ( $baseurl, $dst, $file ) {
 
 $typ = ValidateDTyp -dtyp $dtyp
 
-$dst = 'C:\FDT\KundSetup'
+$dst = 'C:\FDT\KundSetup\Client'
 $url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/master"
 $initb = "Init.bat"
 $init = "Init.ps1"
@@ -59,27 +59,36 @@ $erif = "ERIF_Certificate_Authority.p7b"
 $tvmsi = "TeamViewer_Host-idcfv2nduh.msi"
 $tvass = "TeamViewer_Assignment.exe"
 
-GetFileFromWeb -baseurl $url -dst $dst -file $initb
-GetFileFromWeb -baseurl $url -dst $dst -file $init
-GetFileFromWeb -baseurl $url -dst $dst -file $logon
+Write-Host "Retrieving "$initb
+GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $initb
+Write-Host "Retrieving "$init
+GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $init
+Write-Host "Retrieving "$logon
+GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $logon
 
 $kundurl = $url+'/Kund/'+$kundnr
+Write-Host "Retrieving "$kundnr'.json'
 GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.json'
 
 $tvmsiurl = $url+'/Client/assets/TeamViewerMSI'
+Write-Host "Retrieving "$tvmsi
 GetFileFromWeb -baseurl $tvmsiurl -dst $dst -file $tvmsi
 
 $tvassurl = $url+'/Client/assets/TeamViewer_Host_Assignment/Win'
+Write-Host "Retrieving "$tvass
 GetFileFromWeb -baseurl $tvassurl -dst $dst -file $tvass
 
-GetFileFromWeb -baseurl $url -dst $dst -file $erif
+Write-Host "Retrieving "$erif
+GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $erif
 
 # Pull the ERCert
 if ($typ -eq "K" -Or $typ -eq "O") {
    $thacert = $kundnr+'_'+$typ+'_'+$seq+'.p12'
+   Write-Host "Retrieving "$thacert
    GetFileFromWeb -baseurl $kundurl -dst $dst -file $thacert
 }
 
 #Invoke-Expression $dst'\'$init "-kundnr $kundnr -dtyp $typ -seq $seq"
 $argstr = "-kundnr $kundnr -dtyp $typ -seq $seq -noexit"
+Exit
 Invoke-Expression $dst"\Init.ps1 $argstr"
