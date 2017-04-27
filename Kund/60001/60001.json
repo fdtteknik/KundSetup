@@ -1,0 +1,94 @@
+{
+	"kundnr": "60001",
+	"subnet": "192.168.4.0",
+	"gateway": "192.168.4.1",
+	"netmask": "255.255.255.0",
+	"rds": "192.168.10.70",
+	"erexe": "http://ercontrol.fdt.se/Installer/setup.exe",
+	"dhcp": "192.168.4.101",
+	"dhcpmask": "29",
+	"tvtoken": "2223529-gKHel3wekMqjcs9AHfga",
+	"kassor": [
+		{
+		"number": 1,
+		"description": "Kassa anvandare for butiken",
+		"domain": "FDTCLOUD",
+		"usr": "60001-0U1",
+		"ip": "192.168.4.190"
+		}, 
+		{
+		"number": 2,
+		"description": "Kassa anvandare for butiken",
+		"domain": "FDTCLOUD",
+		"usr": "60001-0U2",
+		"ip": "192.168.4.191"
+		}, 
+		{
+		"number": 3,
+		"description": "Kassa anvandare for butiken",
+		"domain": "FDTCLOUD",
+		"usr": "60001-0U3",
+		"ip": "192.168.4.192"
+		}
+	],
+	"bos": [
+		{
+		"number": 1,
+		"description": "Backoffice anvandare for butiken",
+		"domain": "FDTCLOUD",
+		"usr": "60001-0U4",
+		"ip": "192.168.4.193"
+		}, 
+		{
+		"number": 2,
+		"description": "Backoffice anvandare for butiken",
+		"domain": "FDTCLOUD",		
+		"usr": "60001-0U5",
+		"ip": "192.168.4.194"
+		}
+	],
+	"order": [
+		{
+		"number": 1,
+		"description": "Orderplats anvandare for butiken",
+		"domain": "FDTCLOUD",
+		"usr": "60001-0U6",
+		"ip": "192.168.4.195"
+		}, 
+		{
+		"number": 2,
+		"description": "Orderplats anvandare for butiken",
+		"domain": "FDTCLOUD",		
+		"usr": "60001-0U7",
+		"ip": "192.168.4.196"
+		}
+	],"printers" : [
+		{
+		"type": "Laserskrivare",
+		"location": "kassa",
+		"driver": "HP Universial PCL6 driver",
+		"ip": "10.61.10.241",
+		"url": "http://"
+		}, 
+		{
+		"type": "Kvittoskrivare",
+		"location": "kassa",
+		"driver": "",
+		"ip": "10.61.10.240",
+		"url": ""
+		}, 
+		{
+		"type": "Etikettskrivare",
+		"location": "kassa",
+		"driver": "zebra",
+		"ip": "10.61.10.245",
+		"url": ""
+		}
+	],
+	"payment": [
+		{
+		"type": "Babs Yomani",
+		"ip": "10.61.3.50"
+	}
+	]
+}

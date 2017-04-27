@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Kunder>
+		<Kund>
+			<Kundnummer>22325</Kundnummer>
+			<Filialnummer>0</Filialnummer>
+			<Server>FDTCLOUDRD003</Server>
+			<SQLPWD>testpassword</SQLPWD>
+			<IP>10.61.18.0</IP>
+			<Users>
+				<User>
+					<Firstname>Backoffice</Firstname>
+					<Lastname>1</Lastname>
+					<VPN-access>1</VPN-access>
+				</User>
+				<User>
+					<Firstname>Backoffice</Firstname>
+					<Lastname>2</Lastname>
+					<VPN-access>0</VPN-access>
+				</User>
+				<User>
+					<Firstname>Backoffice</Firstname>
+					<Lastname>3</Lastname>
+					<VPN-access>0</VPN-access>
+				</User>
+			</Users>
+			<Printers>
+				<Printer>
+					<Location>Kontor</Location>
+					<Description>HP Laserjet</Description>
+				</Printer>
+			</Printers>	
+		</Kund>
+	</Kunder>
+</XMLObject>
