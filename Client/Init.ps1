@@ -151,14 +151,17 @@ function SetupUser ($name) {
    Add-LocalGroupMember -Group Administrators -Member $uname
 }
 
-function DisableUser($user, $Computer) {
+function DisableUser($usrname, $Computer) {
    $EnableUser = 512
    $DisableUser = 2 
+   $EnableUser = 512 
+   $PasswordNotExpire = 65536 
+   $PasswordCantChange = 64 
 
-   $ObjUser = [ADSI]”WinNT://$Computer/$user”
-   $objUser.description = “Disabled Account”
-   $objUser.userflags = $DisableUser
-   $objUser.setinfo()
+   $user = $Computer.psbase.Children.Find($usrname)
+   $user.description = “Disabled Account”
+   $user.UserFlags = $DisableUser + $PasswordNotExpire + $PasswordCantChange
+   $user.SetInfo()
 }
 
 function DisableUnwantedUsers($dtyp) {
@@ -168,13 +171,13 @@ function DisableUnwantedUsers($dtyp) {
    $ComputerName = $env:COMPUTERNAME
    $Computer = [adsi]"WinNT://$ComputerName"   
    if ($userkind -ne $KASSA) {
-      DisableUser -user "Kassa" -Computer $Computer
+      DisableUser -usrname "Kassa" -Computer $Computer
    } 
    if ($userkind -ne $Order) {
-      DisableUser -user "Order" -Computer $Computer
+      DisableUser -usrname "Order" -Computer $Computer
    }
    if ($userkind -ne $BO) {
-      DisableUser -user "Backoffice" -Computer $Computer
+      DisableUser -usrname "Backoffice" -Computer $Computer
    }
 }
 
