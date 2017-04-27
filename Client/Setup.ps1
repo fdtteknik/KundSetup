@@ -90,5 +90,4 @@ if ($typ -eq "K" -Or $typ -eq "O") {
 
 #Invoke-Expression $dst'\'$init "-kundnr $kundnr -dtyp $typ -seq $seq"
 $argstr = "-kundnr $kundnr -dtyp $typ -seq $seq -noexit"
-Exit
 Invoke-Expression $dst"\Init.ps1 $argstr"
