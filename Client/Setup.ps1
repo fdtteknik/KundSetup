@@ -88,7 +88,6 @@ if ($typ -eq "K" -Or $typ -eq "O") {
    GetFileFromWeb -baseurl $kundurl -dst $dst -file $thacert
 }
 
-Exit
 #Invoke-Expression $dst'\'$init "-kundnr $kundnr -dtyp $typ -seq $seq"
 $argstr = "-kundnr $kundnr -dtyp $typ -seq $seq -noexit"
 Invoke-Expression $dst"\Init.ps1 $argstr"
