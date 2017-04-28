@@ -88,6 +88,9 @@ if ($typ -eq "K" -Or $typ -eq "O") {
    GetFileFromWeb -baseurl $kundurl -dst $dst -file $thacert
 }
 
+Write-Host "Sleeping 30 seconds to allow abort"
+Start-Sleep 30
+
 #Invoke-Expression $dst'\'$init "-kundnr $kundnr -dtyp $typ -seq $seq"
 $argstr = "-kundnr $kundnr -dtyp $typ -seq $seq -noexit"
 Invoke-Expression $dst"\Init.ps1 $argstr"
