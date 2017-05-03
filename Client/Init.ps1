@@ -83,8 +83,8 @@ function ValidateDTypAndSequence ($dtyp, $seq, $json) {
          Exit
       }
    } ElseIf (IsOrder($dtyp))  {
-      if ($seq -lt 1 -Or $seq -gt $json.bos.Count) {
-         Write-Host "The sequence number for ORDER must be between 1 and "$json.bos.Count 
+      if ($seq -lt 1 -Or $seq -gt $json.order.Count) {
+         Write-Host "The sequence number for ORDER must be between 1 and "$json.order.Count 
          Start-Sleep 20
          Exit
       }
