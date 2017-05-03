@@ -83,8 +83,8 @@ function ValidateDTypAndSequence ($dtyp, $seq, $json) {
          Exit
       }
    } ElseIf (IsOrder($dtyp))  {
-      if ($seq -lt 1 -Or $seq -gt $json.bos.Count) {
-         Write-Host -ForegroundColor Red "The sequence number for ORDER must be between 1 and "$json.bos.Count 
+      if ($seq -lt 1 -Or $seq -gt $json.order.Count) {
+         Write-Host "The sequence number for ORDER must be between 1 and "$json.order.Count 
          Start-Sleep 20
          Exit
       }
@@ -132,7 +132,7 @@ function ReadAndValidateXMLFile($xmlFile) {
             $InputXML = $XmlFile
         }
     } else {
-        $InputXML = Select-FileDialog -Title "V‰lj XML-fil"
+        $InputXML = Select-FileDialog -Title "V√§lj XML-fil"
     }
     "InputXMLFile: $InputXML" | Write-Host 
     Try{
@@ -194,7 +194,7 @@ function DisableUser($usrname, $Computer) {
    $PasswordCantChange = 64 
 
    $user = $Computer.psbase.Children.Find($usrname)
-   $user.description = ìDisabled Accountî
+   $user.description = ‚ÄúDisabled Account‚Äù
    $user.UserFlags = $DisableUser + $PasswordNotExpire + $PasswordCantChange
    $user.SetInfo()
 }
@@ -308,7 +308,7 @@ function InstallTeamviewerHost ($tvtoken, $name) {
    # This i a Ugly one with a lot of requirements other wise the AssignmnetData.json wont be generated'
    # To use the new Silent Host Roll Out feature, a few requirements exist:
    ## TeamViewer 12 Corporate license activated on your account
-   ## Custom TeamViewer 12 Host with ìAllow account assignment without confirmationî activated
+   ## Custom TeamViewer 12 Host with ‚ÄúAllow account assignment without confirmation‚Äù activated
    ## Custom Host is deployed with the Configuration ID in the file name
    ## Device is not already assigned to an existing account when the new Host is deployed
    ## Only works for Host, not for TeamViewer full version
@@ -334,12 +334,12 @@ function InstallTeamviewerHost ($tvtoken, $name) {
 
 
 function MyImport-PfxCertificate {
-   param([String]$certPath,[String]$certRootStore = ìCurrentUserî,[String]$certStore = ìMyî,$pfxPass = $null)
+   param([String]$certPath,[String]$certRootStore = ‚ÄúCurrentUser‚Äù,[String]$certStore = ‚ÄúMy‚Äù,$pfxPass = $null)
    $pfx = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
-   if ($pfxPass -eq $null) {$pfxPass = read-host ìEnter the pfx passwordî -assecurestring}
-   $pfx.import($certPath,$pfxPass,ìExportable,PersistKeySetî)
+   if ($pfxPass -eq $null) {$pfxPass = read-host ‚ÄúEnter the pfx password‚Äù -assecurestring}
+   $pfx.import($certPath,$pfxPass,‚ÄúExportable,PersistKeySet‚Äù)
    $store = new-object System.Security.Cryptography.X509Certificates.X509Store($certStore,$certRootStore)
-   $store.open(ìMaxAllowedî)
+   $store.open(‚ÄúMaxAllowed‚Äù)
    $store.add($pfx)
    $store.close()
 }
@@ -403,7 +403,7 @@ function SetIP ($dtyp, $seq, $xml) {
    foreach ($iface in $ifaces) {
       Write-Host $iface.name
       if ($iface.name.StartsWith("ethernet","CurrentCultureIgnoreCase")) {
-         New-NetIPAddress ñInterfaceAlias $iface.name ñIPAddress $myIp ñPrefixLength 24 -DefaultGateway $xml.butiksgw
+         New-NetIPAddress ‚ÄìInterfaceAlias $iface.name ‚ÄìIPAddress $myIp ‚ÄìPrefixLength 24 -DefaultGateway $xml.butiksgw
       }
    }
 }
@@ -426,7 +426,7 @@ $typ = DtypGetLong -dtyp $dtyp
 Write-Host "NameComputer: $kundnr-$typ-$seq"
 #$name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 
-# Skapa anv‰ndare
+# Skapa anv√§ndare
 # OK - 
 # Users already created in image - RIP this
 #SetupUser -name $name
@@ -436,7 +436,7 @@ DisableUnwantedUsers -dtyp $dtyp
 # TODO
 # InstallA4Printers -kundnr $kundnr -dtyp $dtyp -printers $json.printers
 
-# Skapa och L‰gg RDP pÂ skrivbordet
+# Skapa och L√§gg RDP p√• skrivbordet
 # OK - 
 Write-Host "Create-RD"
 Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
