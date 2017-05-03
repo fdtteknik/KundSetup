@@ -103,6 +103,28 @@ function ValidateKundnr ($iknr, $jknr) {
    }
 }
 
+function ReadAndValidateXMLFile($xfile) {
+
+    If($XmlFile){
+        If(!(Test-Path $XmlFile)){
+            "Fel: XML-filen $XmlFile finns inte!" | Write-Log -LogFile $LogFile -Passthru | Write-Host -ForegroundColor Red
+            Avsluta
+        } else {
+            $InputXML = $XmlFile
+        }
+    } else {
+        $InputXML = Select-FileDialog -Title "Välj XML-fil"
+    }
+    "InputXMLFile: $InputXML" | Write-Log -LogFile $Logfile -Passthru | Write-Verbose
+    Try{
+        [xml]$xmlContent = [xml](Get-Content -Path $InputXML)
+        [System.Xml.XmlElement] $xmlRoot = $xmlContent.get_DocumentElement()
+        [System.Xml.XmlElement] $xmlKunder = $XmlRoot.Kunder
+    } Catch {
+        "Fel: kontrollera XML-filen! $($_.Exception.Message)" | Write-Log -LogFile $LogFile | Write-Host -ForegroundColor Red
+        Exit
+    }
+}
  
 function ReadAndValidateJsonFile ($jfile) {
    $FileExists = Test-Path $jfile
@@ -346,6 +368,7 @@ function SetIP ($dtyp, $seq, $json) {
 
 # VERIFY THAT INPUT AND DATA MATCH 
 Write-Host "ReadAndValidateJsonFile"
+$xml =  ReadAndValidateXMLFile -xfile $fpath$kundnr'.xml'
 $json = ReadAndValidateJsonFile -jfile $fpath$kundnr'.json'
 
 Write-Host "ValidateKundnr"
