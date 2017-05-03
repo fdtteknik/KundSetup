@@ -50,8 +50,12 @@ function GetFileFromWeb ( $baseurl, $dst, $file ) {
 
 $typ = ValidateDTyp -dtyp $dtyp
 
+# OBS - for prod the master branch shall be used
+#$url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/master"
+## TEST URL
+$url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/Client-Server-XML"
+
 $dst = 'C:\FDT\KundSetup\Client'
-$url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/master"
 $initb = "Init.bat"
 $init = "Init.ps1"
 $logon = "Logon.ps1"
