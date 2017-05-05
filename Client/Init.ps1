@@ -424,7 +424,7 @@ ValidateDTypAndSequenceXML -dtyp $dtyp -seq $seq -xml $xmlKund
 # OK - 
 $typ = DtypGetLong -dtyp $dtyp
 Write-Host "NameComputer: $kundnr-$typ-$seq"
-#$name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
+$name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 
 # Skapa användare
 # OK - 
@@ -453,9 +453,9 @@ InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
 
 # Install ERPOS
 # OK - 
-Write-Host "InstallERPos"
-InstallERPos -erurl $xmlKund.erurl
+#Write-Host "InstallERPos"
+#InstallERPos -erurl $xmlKund.erurl
 
 # Set static IP
-Write-Host "SetIP"
-SetIP -dtyp $dtyp -seq $seq -xml $xmlKund
+#Write-Host "SetIP"
+#SetIP -dtyp $dtyp -seq $seq -xml $xmlKund
