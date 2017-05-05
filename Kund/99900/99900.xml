@@ -5,6 +5,7 @@
 			<Kundnummer>60001</Kundnummer>
 			<Filialnummer>0</Filialnummer>
 			<Server>FDTCLOUDRD003</Server>
+			<RDS>10.124.0.12</RDS>
 			<SQLPWD>testpassword</SQLPWD>
 			<IP>10.61.18.0</IP>
 			<butiksgw>192.168.4.1</butiksgw>

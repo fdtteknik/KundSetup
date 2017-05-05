@@ -56,7 +56,6 @@ $url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/master"
 $dst = 'C:\FDT\KundSetup\Client'
 $initb = "Init.bat"
 $init = "Init.ps1"
-$logon = "Logon.ps1"
 $erif = "ERIF_Certificate_Authority.p7b"
 $tvmsi = "TeamViewer_Host-idcfv2nduh.msi"
 $tvass = "TeamViewer_Assignment.exe"
@@ -65,8 +64,6 @@ Write-Host "Retrieving "$initb
 GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $initb
 Write-Host "Retrieving "$init
 GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $init
-Write-Host "Retrieving "$logon
-GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $logon
 
 $kundurl = $url+'/Kund/'+$kundnr
 Write-Host "Retrieving "$kundnr'.xml'
