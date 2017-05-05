@@ -69,10 +69,6 @@ Write-Host "Retrieving "$logon
 GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $logon
 
 $kundurl = $url+'/Kund/'+$kundnr
-Write-Host "Retrieving "$kundnr'.json'
-GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.json'
-
-$kundurl = $url+'/Kund/'+$kundnr
 Write-Host "Retrieving "$kundnr'.xml'
 GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.xml'
 
