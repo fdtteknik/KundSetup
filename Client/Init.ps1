@@ -436,3 +436,10 @@ InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
 # OK - 
 #Write-Host "InstallERPos"
 #InstallERPos -erurl $xmlKund.erurl
+
+# Remove files no longer needed
+# TODO
+Remove-Item -Recurse -Force $fpath
+
+# Reboot the system
+restart-computer
