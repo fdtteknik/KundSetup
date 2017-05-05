@@ -415,7 +415,7 @@ Write-Host "ReadAndValidateXMLFile"
 $xmlKund =  ReadAndValidateXMLFile -xmlFile $fpath$kundnr'.xml'
 
 Write-Host "ValidateKundnr"
-ValidateKundnr -iknr $kundnr -jknr $xmlKund.Kundnummer
+#ValidateKundnr -iknr $kundnr -jknr $xmlKund.Kundnummer
 
 Write-Host "ValidateDTypAndSequence"
 ValidateDTypAndSequenceXML -dtyp $dtyp -seq $seq -xml $xmlKund
