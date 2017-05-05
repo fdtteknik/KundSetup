@@ -72,6 +72,10 @@ $kundurl = $url+'/Kund/'+$kundnr
 Write-Host "Retrieving "$kundnr'.json'
 GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.json'
 
+$kundurl = $url+'/Kund/'+$kundnr
+Write-Host "Retrieving "$kundnr'.xml'
+GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.xml'
+
 $tvmsiurl = $url+'/Client/assets/TeamViewerMSI'
 Write-Host "Retrieving "$tvmsi
 GetFileFromWeb -baseurl $tvmsiurl -dst $dst -file $tvmsi
