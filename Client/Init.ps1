@@ -425,7 +425,7 @@ Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
 # TeamViewer Host Konfigurera
 # OK - 
 Write-Host "InstallTeamViewerHost"
-InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
+#InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 # Install Cert
 # TODO
