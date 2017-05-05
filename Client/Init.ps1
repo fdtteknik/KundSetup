@@ -333,16 +333,16 @@ function InstallTeamviewerHost ($tvtoken, $name) {
 }
 
 
-function MyImport-PfxCertificate {
-   param([String]$certPath,[String]$certRootStore = "CurrentUser"ù,[String]$certStore = "My"ù,$pfxPass = $null)
-   $pfx = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
-   if ($pfxPass -eq $null) {$pfxPass = read-host "Enter the pfx password"ù -assecurestring}
-   $pfx.import($certPath,$pfxPass,"Exportable,PersistKeySet"ù)
-   $store = new-object System.Security.Cryptography.X509Certificates.X509Store($certStore,$certRootStore)
-   $store.open("MaxAllowed")
-   $store.add($pfx)
-   $store.close()
-}
+#function MyImport-PfxCertificate { 
+#   param([String]$certPath,[String]$certRootStore = "CurrentUser"ù,[String]$certStore = "My"ù,$pfxPass = $null)
+#   $pfx = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+#   if ($pfxPass -eq $null) {$pfxPass = read-host "Enter the pfx password"ù -assecurestring}
+#   $pfx.import($certPath,$pfxPass,"Exportable,PersistKeySet"ù)
+#   $store = new-object System.Security.Cryptography.X509Certificates.X509Store($certStore,$certRootStore)
+#   $store.open("MaxAllowed")
+#   $store.add($pfx)
+#   $store.close()
+#}
 
 function InstallERPosCert ($kundnr, $dtyp, $seq) {
    Write-Host "Setting up certificate import on user logon"
@@ -448,8 +448,8 @@ InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 # Install Cert
 # TODO
-Write-Host "InstallERPosCert"
-InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
+#Write-Host "InstallERPosCert"
+#InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
 
 # Install ERPOS
 # OK - 
