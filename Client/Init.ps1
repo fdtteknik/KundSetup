@@ -307,7 +307,6 @@ $out += "desktopwidth:i:" + $resWidth
 $out += "desktopheight:i:" + $resHgt
 $out += "username:s:" + $domain + "\" + $username
 $out += $hereString
-$outFileName = $fpath+"Avance" + "-" + $username + ".rdp"
 $out | out-file $outFileName
 }
 
@@ -389,7 +388,6 @@ function InstallERPos ($erurl) {
    # Olle claims best  done on first logon
 
 }
-
  
 # Main .......................................................................
 
@@ -412,7 +410,7 @@ $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 # OK - 
 # Users already created in image - RIP this
 #SetupUser -name $name
-DisableUnwantedUsers -dtyp $dtyp
+#DisableUnwantedUsers -dtyp $dtyp
 
 # Install printer
 # TODO
