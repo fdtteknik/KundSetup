@@ -69,6 +69,13 @@ function IsBO($dtyp) {
    return $false
 }
 
+function ValidateKundnr ($iknr, $knr) {
+   If ($iknr -ne $knr) {
+      Write-Host "Mismatching kundnr "$iknr" vs "$knr 
+      Start-Sleep 20
+      Exit
+   }
+}
 function ValidateDTypAndSequence ($dtyp, $seq, $json) {
    if (IsKassa($dtyp)) {
       if ($seq -lt 1 -Or $seq -gt $json.kassor.Count) {
@@ -332,17 +339,16 @@ function InstallTeamviewerHost ($tvtoken, $name) {
    cmd /c $mcmd /S
 }
 
-
-#function MyImport-PfxCertificate { 
-#   param([String]$certPath,[String]$certRootStore = "CurrentUser"ù,[String]$certStore = "My"ù,$pfxPass = $null)
-#   $pfx = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
-#   if ($pfxPass -eq $null) {$pfxPass = read-host "Enter the pfx password"ù -assecurestring}
-#   $pfx.import($certPath,$pfxPass,"Exportable,PersistKeySet"ù)
-#   $store = new-object System.Security.Cryptography.X509Certificates.X509Store($certStore,$certRootStore)
-#   $store.open("MaxAllowed")
-#   $store.add($pfx)
-#   $store.close()
-#}
+function MyImport-PfxCertificate {
+   param([String]$certPath,[String]$certRootStore = ìCurrentUserî,[String]$certStore = ìMyî,$pfxPass = $null)
+   $pfx = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+   if ($pfxPass -eq $null) {$pfxPass = read-host ìEnter the pfx passwordî -assecurestring}
+   $pfx.import($certPath,$pfxPass,ìExportable,PersistKeySetî)
+   $store = new-object System.Security.Cryptography.X509Certificates.X509Store($certStore,$certRootStore)
+   $store.open(ìMaxAllowedî)
+   $store.add($pfx)
+   $store.close()
+}
 
 function InstallERPosCert ($kundnr, $dtyp, $seq) {
    Write-Host "Setting up certificate import on user logon"
@@ -384,29 +390,6 @@ function InstallERPos ($erurl) {
 
 }
 
-function SetIP ($dtyp, $seq, $xml) {
-   $myip = "127.0.0.1"
-   if (IsKassa($dtyp)) {
-      $dator = getKassaBySeq -xmlKassor $xml.Kassor -seq $seq
-   } ElseIf (IsBO($dtyp)) {
-      $dator = getBackofficeplatserBySeq $xml.Backofficeplatser -seq $seq
-   } ElseIf (IsOrder($dtyp)) {
-      $dator =getOderplatsBySeq $xml.Orderplatser -seq $seq
-   } Else {
-      Write-Host -ForegroundColor Red $dtyp" Not a valid computer type! Should be KASSA, ORDER or BO" 
-      Start-Sleep 20
-      Exit
-   }
-   $myip = $dator.butiksip
-    
-   $ifaces = Get-NetAdapter -physical | select Name
-   foreach ($iface in $ifaces) {
-      Write-Host $iface.name
-      if ($iface.name.StartsWith("ethernet","CurrentCultureIgnoreCase")) {
-         New-NetIPAddress -InterfaceAlias $iface.name -IPAddress $myIp -PrefixLength 24 -DefaultGateway $xml.butiksgw
-      }
-   }
-}
  
 # Main .......................................................................
 
@@ -415,13 +398,12 @@ Write-Host "ReadAndValidateXMLFile"
 $xmlKund =  ReadAndValidateXMLFile -xmlFile $fpath$kundnr'.xml'
 
 Write-Host "ValidateKundnr"
-#ValidateKundnr -iknr $kundnr -jknr $xmlKund.Kundnummer
+ValidateKundnr -iknr $kundnr -knr $xmlKund.Kundnummer
 
 Write-Host "ValidateDTypAndSequence"
 ValidateDTypAndSequenceXML -dtyp $dtyp -seq $seq -xml $xmlKund
 
 # Give Computer its name
-# OK - 
 $typ = DtypGetLong -dtyp $dtyp
 Write-Host "NameComputer: $kundnr-$typ-$seq"
 $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
@@ -448,14 +430,10 @@ InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 # Install Cert
 # TODO
-#Write-Host "InstallERPosCert"
-#InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
+Write-Host "InstallERPosCert"
+InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
 
 # Install ERPOS
 # OK - 
 #Write-Host "InstallERPos"
 #InstallERPos -erurl $xmlKund.erurl
-
-# Set static IP
-#Write-Host "SetIP"
-#SetIP -dtyp $dtyp -seq $seq -xml $xmlKund
