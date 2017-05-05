@@ -308,7 +308,7 @@ function InstallTeamviewerHost ($tvtoken, $name) {
    # This i a Ugly one with a lot of requirements other wise the AssignmnetData.json wont be generated'
    # To use the new Silent Host Roll Out feature, a few requirements exist:
    ## TeamViewer 12 Corporate license activated on your account
-   ## Custom TeamViewer 12 Host with “Allow account assignment without confirmation” activated
+   ## Custom TeamViewer 12 Host with Allow account assignment without confirmation” activated
    ## Custom Host is deployed with the Configuration ID in the file name
    ## Device is not already assigned to an existing account when the new Host is deployed
    ## Only works for Host, not for TeamViewer full version
@@ -334,12 +334,12 @@ function InstallTeamviewerHost ($tvtoken, $name) {
 
 
 function MyImport-PfxCertificate {
-   param([String]$certPath,[String]$certRootStore = “CurrentUser”,[String]$certStore = “My”,$pfxPass = $null)
+   param([String]$certPath,[String]$certRootStore = "CurrentUser"�,[String]$certStore = "My"�,$pfxPass = $null)
    $pfx = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
-   if ($pfxPass -eq $null) {$pfxPass = read-host “Enter the pfx password” -assecurestring}
-   $pfx.import($certPath,$pfxPass,“Exportable,PersistKeySet”)
+   if ($pfxPass -eq $null) {$pfxPass = read-host "Enter the pfx password"� -assecurestring}
+   $pfx.import($certPath,$pfxPass,"Exportable,PersistKeySet"�)
    $store = new-object System.Security.Cryptography.X509Certificates.X509Store($certStore,$certRootStore)
-   $store.open(“MaxAllowed”)
+   $store.open("MaxAllowed")
    $store.add($pfx)
    $store.close()
 }
@@ -403,7 +403,7 @@ function SetIP ($dtyp, $seq, $xml) {
    foreach ($iface in $ifaces) {
       Write-Host $iface.name
       if ($iface.name.StartsWith("ethernet","CurrentCultureIgnoreCase")) {
-         New-NetIPAddress –InterfaceAlias $iface.name –IPAddress $myIp –PrefixLength 24 -DefaultGateway $xml.butiksgw
+         New-NetIPAddress -InterfaceAlias $iface.name -IPAddress $myIp -PrefixLength 24 -DefaultGateway $xml.butiksgw
       }
    }
 }
@@ -426,7 +426,7 @@ $typ = DtypGetLong -dtyp $dtyp
 Write-Host "NameComputer: $kundnr-$typ-$seq"
 $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 
-# Skapa användare
+# Skapa anv�ndare
 # OK - 
 # Users already created in image - RIP this
 #SetupUser -name $name
@@ -436,7 +436,7 @@ DisableUnwantedUsers -dtyp $dtyp
 # TODO
 # InstallA4Printers -kundnr $kundnr -dtyp $dtyp -printers $json.printers
 
-# Skapa och Lägg RDP på skrivbordet
+# Skapa och L�gg RDP p� skrivbordet
 # OK - 
 Write-Host "Create-RD"
 Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
