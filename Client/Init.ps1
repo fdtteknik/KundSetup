@@ -429,8 +429,8 @@ InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 # Install Cert
 # TODO
-Write-Host "InstallERPosCert"
-InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
+#Write-Host "InstallERPosCert"
+#InstallERPosCert -kundnr $xmlKund.Kundnummer -dtyp $dtyp -seq $seq
 
 # Install ERPOS
 # OK - 
