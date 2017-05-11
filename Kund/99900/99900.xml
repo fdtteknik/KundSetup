@@ -2,7 +2,7 @@
 <XMLObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Kunder>
 		<Kund>
-			<Kundnummer>60001</Kundnummer>
+			<Kundnummer>99900</Kundnummer>
 			<Server>FDTCLOUDRD003</Server>
 			<RDS>10.124.0.12</RDS>
 			<tvtoken>2223529-gKHel3wekMqjcs9AHfga</tvtoken>
