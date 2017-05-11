@@ -77,15 +77,15 @@ $tvassurl = $url+'/Client/assets/TeamViewer_Host_Assignment/Win'
 Write-Host "Retrieving "$tvass
 GetFileFromWeb -baseurl $tvassurl -dst $dst -file $tvass
 
-Write-Host "Retrieving "$erif
-GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $erif
+#Write-Host "Retrieving "$erif
+#GetFileFromWeb -baseurl $url"/Client" -dst $dst -file $erif
 
 # Pull the ERCert
-if ($typ -eq "K" -Or $typ -eq "O") {
-   $thacert = $kundnr+'_'+$typ+'_'+$seq+'.p12'
-   Write-Host "Retrieving "$thacert
-   GetFileFromWeb -baseurl $kundurl -dst $dst -file $thacert
-}
+#if ($typ -eq "K" -Or $typ -eq "O") {
+#   $thacert = $kundnr+'_'+$typ+'_'+$seq+'.p12'
+#   Write-Host "Retrieving "$thacert
+#   GetFileFromWeb -baseurl $kundurl -dst $dst -file $thacert
+#}
 
 Write-Host "Sleeping 30 seconds to allow abort"
 Start-Sleep 30
