@@ -12,17 +12,17 @@
 					<rdp>60001-0U1</rdp>
 					<domain>FDTCLOUD</domain>
 				</Kassa>
+				<Kassa>
+					<nummer>2</nummer>
+					<rdp>60001-0U2</rdp>
+					<domain>FDTCLOUD</domain>
+				</Kassa>
+				<Kassa>
+					<nummer>3</nummer>
+					<rdp>60001-0U3</rdp>
+					<domain>FDTCLOUD</domain>
+				</Kassa>
 			</Kassor>
-			<Kassa>
-				<nummer>2</nummer>
-				<rdp>60001-0U2</rdp>
-				<domain>FDTCLOUD</domain>
-			</Kassa>
-			<Kassa>
-				<nummer>3</nummer>
-				<rdp>60001-0U3</rdp>
-				<domain>FDTCLOUD</domain>
-			</Kassa>
 			<Orderplatser>
 				<Orderplats>
 					<nummer>1</nummer>
