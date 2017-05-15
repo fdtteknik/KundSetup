@@ -21,7 +21,7 @@ function ValidateDTyp ($dtyp)
    }
    ElseIf ($dtyp -eq $BO -Or $dtyp -eq "B") 
    {
-      retrun "B"
+      return "B"
    }
    ElseIf ($dtyp -eq $ORDER -Or $dtyp -eq "O") 
    {
