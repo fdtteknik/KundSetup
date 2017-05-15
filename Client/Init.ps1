@@ -307,7 +307,7 @@ $out += "desktopwidth:i:" + $resWidth
 $out += "desktopheight:i:" + $resHgt
 $out += "username:s:" + $domain + "\" + $username
 $out += $hereString
-$outFileName = "C:\Users\FDT\Desktop\" + $username + ".rdp"
+$outFileName = "C:\Users\FDT\Desktop\FDT.rdp"
 $out | out-file $outFileName
 }
 
