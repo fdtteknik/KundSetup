@@ -1,6 +1,6 @@
 param ( 
    [string]$kundnr = $( Read-Host "Mata in kundnr:" ), 
-   [string]$dtyp = $( Read-Host "Mata in typ [K(ASSA)/B(O)/O(RDER)]:" ).ToUpper(),
+   [string]$dtyp = $( Read-Host "Mata in typ [K(ASSA)/B(ACKOFFICE)/O(RDER)]:" ).ToUpper(),
    [string]$seq = $( Read-Host "Mata in sekvensnummer för typ:" )
 )
 
@@ -8,7 +8,7 @@ param (
 
 # Constants ..................................................................
 $KASSA = "KASSA"
-$BO = "BO"
+$BO = "BACKOFFICE"
 $ORDER = "ORDER"
 $LASERSKRIVARE = "LASERSKRIVARE"
 $KVITTOSKRIVARE = "KVITTOSKRIVARE"

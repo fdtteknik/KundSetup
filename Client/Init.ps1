@@ -10,7 +10,7 @@ param (
 $KASSA = "KASSA"
 $K = "K"
 
-$BO = "BO"
+$BO = "BACKOFFICE"
 $B = "B"
 
 $ORDER = "ORDER"
