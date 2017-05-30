@@ -464,5 +464,9 @@ InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 # TODO
 Remove-Item -Recurse -Force $fpath
 
+Write-Host "Sleeping 10 seconds before reboot"
+Start-Sleep 10
+
+
 # Reboot the system
 restart-computer
