@@ -7,13 +7,13 @@ param (
 #Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 
 # Constants ..................................................................
-$KASSA = "KASSA"
+$KASSA = "K"
 $K = "K"
 
-$BO = "BO"
+$BO = "B"
 $B = "B"
 
-$ORDER = "ORDER"
+$ORDER = "O"
 $O = "O"
 
 $LASERSKRIVARE = "LASERSKRIVARE"
