@@ -1,6 +1,3 @@
-Write-Host "Det här programmet kommer att ta bort TeamViewer från datorn och installera FDTs TeamViewer-Host"
-Write-Host ""
-Write-Host "Nedan ska det nya TV-alias för datorn anges." 
 param ( 
    [string]$kundnr = $( Read-Host "Mata in kundnr:" ), 
    [string]$dtyp = $( Read-Host "Mata in typ [K(ASSA)/B(ACKOFFICE)/O(RDER)]:" ).ToUpper(),
@@ -48,7 +45,6 @@ function GetFileFromWeb ( $baseurl, $dst, $file ) {
       Exit
    }
 }
-
 
 function UninstallTV () {
     # http://lifeofageekadmin.com/how-to-uninstall-programs-using-powershell/
