@@ -90,6 +90,13 @@ function InstallTeamviewerHost ($tvtoken, $name) {
    cmd /c $mcmd /S
 }
 
+
+function FindAndStopTV () {
+    # https://superuser.com/questions/873601/powershell-script-to-find-the-process-and-kill-the-process
+    Get-Process | Where-Object { $_.Name -eq "myprocess" } | Select-Object -First 1 | Stop-Process
+}
+
+
 $typ = ValidateDTyp -dtyp $dtyp
 
 # OBS - for prod the master branch shall be used
@@ -116,6 +123,9 @@ GetFileFromWeb -baseurl $tvassurl -dst $dst -file $tvass
 
 Write-Host "Sleeping 30 seconds to allow abort"
 Start-Sleep 30
+
+Write-Host "Stopping any running TeamViewer sessions"
+FindAnsStopTV
 
 $name = "{0}-{1}-{2}" -f $kundnr, $typ, $seq
 Write-Host "InstallTeamViewerHost"
