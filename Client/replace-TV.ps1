@@ -11,6 +11,35 @@ $KASSA = "KASSA"
 $BO = "BACKOFFICE"
 $ORDER = "ORDER"
 
+function ReadAndValidateXMLFile($xmlFile) {
+
+    If($XmlFile){
+        If(!(Test-Path $XmlFile)){
+            "Fel: XML-filen $XmlFile finns inte!" | Write-Host -ForegroundColor Red
+            Avsluta
+        } else {
+            $InputXML = $XmlFile
+        }
+    } else {
+        $InputXML = Select-FileDialog -Title "VÃ¤lj XML-fil"
+    }
+    "InputXMLFile: $InputXML" | Write-Host 
+    Try{
+        [xml]$xmlContent = [xml](Get-Content -Path $InputXML)
+        [System.Xml.XmlElement] $xmlRoot = $xmlContent.get_DocumentElement()
+        [System.Xml.XmlElement] $xmlKunder = $XmlRoot.Kunder
+    } Catch {
+        "Fel: kontrollera XML-filen! $($_.Exception.Message)" | Write-Host -ForegroundColor Red
+        Exit
+    }
+    if ($xmlKunder.ChildNodes.Count -ne 1) {
+        "Fel: The XML file should contain one and only one Kund" | Write-Host -ForegroundColor Red
+        Exit
+    }
+    return $xmlKunder.Kund
+}
+
+
 function ValidateDTyp ($dtyp)
 {
    if ($dtyp -eq $KASSA -Or $dtyp -eq "K") 
@@ -49,7 +78,7 @@ function GetFileFromWeb ( $baseurl, $dst, $file ) {
 function UninstallTV () {
     # http://lifeofageekadmin.com/how-to-uninstall-programs-using-powershell/
     $app = Get-WmiObject -Class Win32_Product | Where-Object {
-        $_.Name -match “HP ProLiant Health Monitor Service (X64)”
+        $_.Vendor -match “TeamViewer”
     }
     $app.Uninstall()
 }
@@ -86,14 +115,16 @@ function InstallTeamviewerHost ($tvtoken, $name) {
         -passthru | wait-process
    Start-Sleep 30
    Write-Host "Performing TeamViewer Assignment..."
-   $mcmd =$fpath+'TeamViewer_Assignment.exe -apitoken {0} -datafile "{1}\TeamViewer\AssignmentData.json" -devicealias {2} -wait "30"' -f $tvtoken, ${env:ProgramFiles(x86)}, $name
+   $mcmd =$fpath+'TeamViewer_Assignment.exe -apitoken 2223529-gKHel3wekMqjcs9AHfga -datafile "{0}\TeamViewer\AssignmentData.json" -devicealias {1} -wait "30"' -f ${env:ProgramFiles(x86)}, $name
    cmd /c $mcmd /S
 }
 
 
 function FindAndStopTV () {
     # https://superuser.com/questions/873601/powershell-script-to-find-the-process-and-kill-the-process
-    Get-Process | Where-Object { $_.Name -eq "myprocess" } | Select-Object -First 1 | Stop-Process
+    Get-Process | Where-Object { $_.Name -eq "TeamViewer" } | Select-Object -First 1 | Stop-Process -Force
+    Get-Process | Where-Object { $_.Name -eq "tv_w32" } | Select-Object -First 1 | Stop-Process -Force
+    Get-Process | Where-Object { $_.Name -eq "tv_x64" } | Select-Object -First 1 | Stop-Process -Force
 }
 
 
@@ -101,32 +132,32 @@ $typ = ValidateDTyp -dtyp $dtyp
 
 # OBS - for prod the master branch shall be used
 $url = "https://raw.githubusercontent.com/fdtteknik/KundSetup/master"
-$dst = 'C:\FDT\KundSetup\Client'
 $tvmsi = "TeamViewer_Host-idcfv2nduh.msi"
 $tvass = "TeamViewer_Assignment.exe"
 $fpath = "C:\temp\"
 
-$kundurl = $url+'/Kund/'+$kundnr
-Write-Host "Retrieving "$kundnr'.xml'
-GetFileFromWeb -baseurl $kundurl -dst $dst -file $kundnr'.xml'
-
-Write-Host "ReadAndValidateXMLFile"
-$xmlKund =  ReadAndValidateXMLFile -xmlFile $fpath$kundnr'.xml'
-
 $tvmsiurl = $url+'/Client/assets/TeamViewerMSI'
 Write-Host "Retrieving "$tvmsi
-GetFileFromWeb -baseurl $tvmsiurl -dst $dst -file $tvmsi
+GetFileFromWeb -baseurl $tvmsiurl -dst $fpath -file $tvmsi
 
 $tvassurl = $url+'/Client/assets/TeamViewer_Host_Assignment/Win'
 Write-Host "Retrieving "$tvass
-GetFileFromWeb -baseurl $tvassurl -dst $dst -file $tvass
+GetFileFromWeb -baseurl $tvassurl -dst $fpath -file $tvass
 
-Write-Host "Sleeping 30 seconds to allow abort"
-Start-Sleep 30
+Write-Host "Sleeping 5 seconds to allow abort"
+Start-Sleep 5
 
 Write-Host "Stopping any running TeamViewer sessions"
-FindAnsStopTV
+FindAndStopTV
+
+Write-Host "Removing TeamViewer from computer"
+UninstallTV
+
+Write-Host "Scrubbing registry from TeamViewer keys"
+CleanRegistryFromTV
 
 $name = "{0}-{1}-{2}" -f $kundnr, $typ, $seq
-Write-Host "InstallTeamViewerHost"
+Write-Host "InstallTeamViewerHost with alias: "$name
 InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
+
+Write-Host "Installation Completed!!!"
