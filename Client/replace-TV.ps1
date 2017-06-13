@@ -91,7 +91,7 @@ function CleanRegistryFromTV () {
 } 
 
 
-function InstallTeamviewerHost ($tvtoken, $name) {
+function InstallTeamviewerHost ($name) {
    # This i a Ugly one with a lot of requirements other wise the AssignmnetData.json wont be generated'
    # To use the new Silent Host Roll Out feature, a few requirements exist:
    ## TeamViewer 12 Corporate license activated on your account
@@ -113,10 +113,10 @@ function InstallTeamviewerHost ($tvtoken, $name) {
         -file  $msifile `
         -arg $arguments `
         -passthru | wait-process
-   Write-Host "Sleepinh 30 seconds to allow TeamViewer to do registration & book keeping"
+   Write-Host "Sleeping 30 seconds to allow TeamViewer to do registration & book keeping"
    Start-Sleep 30
    Write-Host "Performing TeamViewer Assignment..."
-   $mcmd =$fpath+'TeamViewer_Assignment.exe -apitoken 2223529-gKHel3wekMqjcs9AHfga -datafile "{0}\TeamViewer\AssignmentData.json" -devicealias {1} -wait "30"' -f ${env:ProgramFiles(x86)}, $name
+   $mcmd =$fpath+'TeamViewer_Assignment.exe -apitoken 2223529-gKHel3wekMqjcs9AHfga -datafile "{0}\TeamViewer\AssignmentData.json" -devicealias {1}' -f ${env:ProgramFiles(x86)}, $name
    cmd /c $mcmd /S
 }
 
@@ -159,7 +159,7 @@ CleanRegistryFromTV
 
 $name = "{0}-{1}-{2}" -f $kundnr, $typ, $seq
 Write-Host "InstallTeamViewerHost with alias: "$name
-InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
+InstallTeamViewerHost -name $name
 
 Write-Host "Installation Completed!!!"
 Exit
