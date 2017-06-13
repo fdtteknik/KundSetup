@@ -113,6 +113,7 @@ function InstallTeamviewerHost ($tvtoken, $name) {
         -file  $msifile `
         -arg $arguments `
         -passthru | wait-process
+   Write-Host "Sleepinh 30 seconds to allow TeamViewer to do registration & book keeping"
    Start-Sleep 30
    Write-Host "Performing TeamViewer Assignment..."
    $mcmd =$fpath+'TeamViewer_Assignment.exe -apitoken 2223529-gKHel3wekMqjcs9AHfga -datafile "{0}\TeamViewer\AssignmentData.json" -devicealias {1} -wait "30"' -f ${env:ProgramFiles(x86)}, $name
@@ -161,3 +162,4 @@ Write-Host "InstallTeamViewerHost with alias: "$name
 InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 Write-Host "Installation Completed!!!"
+Exit
