@@ -88,6 +88,9 @@ function CleanRegistryFromTV () {
     # https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/working-with-registry-keys
     $path='HKLM:\SOFTWARE\Wow6432Node\TeamViewer'
     Remove-Item -path $path -Recurse 
+    $path='HKLM:\SOFTWARE\TeamViewer'
+    Remove-Item -path $path -Recurse 
+
 } 
 
 
