@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Kunder>
+		<Kund>
+			<Kundnummer>17484-0</Kundnummer>
+			<Server>FDTCLOUDVRD013</Server>
+			<RDS>10.124.0.62</RDS>
+			<tvtoken>2223529-gKHel3wekMqjcs9AHfga</tvtoken>
+			<Kassor>
+					<Kassa>
+						<nummer>1</nummer>
+						<rdp>17484-0U1</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
+			</Kassor>
+		</Kund>
+	</Kunder>
+</XMLObject>
