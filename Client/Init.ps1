@@ -428,6 +428,8 @@ ValidateDTypAndSequenceXML -dtyp $dtyp -seq $seq -xml $xmlKund
 # Give Computer its name
 $typ = DtypGetLong -dtyp $dtyp
 Write-Host "NameComputer: $kundnr-$typ-$seq"
+Write-Host "Sleeping 30 seconds before installation to allow aboty"
+Start-Sleep 40
 $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 
 # Skapa användare
