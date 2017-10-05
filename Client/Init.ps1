@@ -448,8 +448,8 @@ Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
 # TeamViewer Host Konfigurera
 # OK - 
 Write-Host "Install TV Host temporarily skipped while CLONE is makeing a mess"
-#Write-Host "InstallTeamViewerHost"
-#InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
+Write-Host "InstallTeamViewerHost"
+InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 # Install Cert
 # TODO
