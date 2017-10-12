@@ -7,11 +7,12 @@
 			<RDS>10.124.0.26</RDS>
 			<tvtoken>2223529-gKHel3wekMqjcs9AHfga</tvtoken>
 			<Kassor>
+					<Kassa>
 						<nummer>2</nummer>
 						<rdp>ElonKarlstU4</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
-						<Kassa>
+					<Kassa>
 						<nummer>3</nummer>
 						<rdp>ElonKarlstU5</rdp>
 						<domain>FDTCLOUD</domain>
