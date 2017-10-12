@@ -2,24 +2,19 @@
 <XMLObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Kunder>
 		<Kund>
-			<Kundnummer>18137-0</Kundnummer>
-			<Server>FDTCLOUDRD007</Server>
-			<RDS>10.124.0.26</RDS>
+			<Kundnummer>17912-0</Kundnummer>
+			<Server>FDTCLOUDRD002</Server>
+			<RDS>10.124.0.21</RDS>
 			<tvtoken>2223529-gKHel3wekMqjcs9AHfga</tvtoken>
 			<Kassor>
 					<Kassa>
 						<nummer>1</nummer>
-						<rdp>LungnetsU1</rdp>
+						<rdp>GLundgOvikU3</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
 					<Kassa>
 						<nummer>2</nummer>
-						<rdp>LungnetsU2</rdp>
-						<domain>FDTCLOUD</domain>
-					</Kassa>
-										<Kassa>
-						<nummer>3</nummer>
-						<rdp>LungnetsU3</rdp>
+						<rdp>GLundgOvikU3</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
 			</Kassor>
