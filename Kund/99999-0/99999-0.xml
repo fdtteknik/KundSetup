@@ -12,6 +12,26 @@
 						<rdp>99999-0U1</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
+					<Kassa>
+						<nummer>2</nummer>
+						<rdp>99999-0U2</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
+					<Kassa>
+						<nummer>3</nummer>
+						<rdp>99999-0U3</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
+					<Kassa>
+						<nummer>4</nummer>
+						<rdp>99999-0U4</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
+					<Kassa>
+						<nummer>5</nummer>
+						<rdp>99999-0U5</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>					
 			</Kassor>
 		</Kund>
 	</Kunder>
