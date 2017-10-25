@@ -1,0 +1,20 @@
+{
+	kund : {
+		knummer: nummer,
+		knamn: namn,
+		orgnummer: orgnummer,
+		klient: [{
+			klnummer: nummer,
+			kedja: namn,
+			orgnummer: nummer,
+			grundkonf: id,
+			lstalle: [{
+				lsnamn: namn,
+				lbutiksid: id,
+				kassor: [{
+					cert-namn: namn
+				}]
+			}]
+		}]
+	}
+}
