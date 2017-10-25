@@ -12,12 +12,14 @@
 						<rdp>14955-0U1</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
-					<Kassa>
-						<nummer>2</nummer>
-						<rdp>14955-0U2</rdp>
-						<domain>FDTCLOUD</domain>
-					</Kassa>
 			</Kassor>
+				<Backofficeplatser>
+						<Backofficeplats>
+							<nummer>1</nummer>
+							<rdp>14955-0U2</rdp>
+							<domain>FDTCLOUD</domain>
+						</Backofficeplats>	
+			</Backofficeplatser>
 		</Kund>
 	</Kunder>
 </XMLObject>
