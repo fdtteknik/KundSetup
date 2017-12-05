@@ -428,7 +428,7 @@ ValidateDTypAndSequenceXML -dtyp $dtyp -seq $seq -xml $xmlKund
 # Give Computer its name
 $typ = DtypGetLong -dtyp $dtyp
 Write-Host "NameComputer: $kundnr-$typ-$seq"
-Write-Host "Sleeping 30 seconds before installation to allow aboty"
+Write-Host "Sleeping 30 seconds before installation to allow abort"
 Start-Sleep 40
 $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 
@@ -449,7 +449,6 @@ Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
 
 # TeamViewer Host Konfigurera
 # OK - 
-Write-Host "Install TV Host temporarily skipped while CLONE is makeing a mess"
 Write-Host "InstallTeamViewerHost"
 InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
