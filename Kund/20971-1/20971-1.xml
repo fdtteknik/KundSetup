@@ -12,7 +12,19 @@
 						<rdp>20971-1U1</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
+					<Kassa>
+						<nummer>2</nummer>
+						<rdp>20971-1U2</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
 			</Kassor>
+			<Orderplatser>
+				<Orderplats>
+					<nummer>1</nummer>
+					<rdp>20971-1U3</rdp>
+					<domain>FDTCLOUD</domain>
+				</Orderplats>
+			</Orderplatser>
 		</Kund>
 	</Kunder>
 </XMLObject>
