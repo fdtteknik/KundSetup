@@ -12,7 +12,41 @@
 						<rdp>20971-0U1</rdp>
 						<domain>FDTCLOUD</domain>
 					</Kassa>
+					<Kassa>
+						<nummer>2</nummer>
+						<rdp>20971-0U2</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
+					<Kassa>
+						<nummer>3</nummer>
+						<rdp>20971-0U3</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
+					<Kassa>
+						<nummer>4</nummer>
+						<rdp>20971-0U4</rdp>
+						<domain>FDTCLOUD</domain>
+					</Kassa>
 			</Kassor>
+			<Orderplatser>
+				<Orderplats>
+					<nummer>1</nummer>
+					<rdp>20971-0U5</rdp>
+					<domain>FDTCLOUD</domain>
+				</Orderplats>
+			</Orderplatser>
+			<Backofficeplatser>
+						<Backofficeplats>
+							<nummer>1</nummer>
+							<rdp>20971-0U6</rdp>
+							<domain>FDTCLOUD</domain>
+						</Backofficeplats>
+						<Backofficeplats>
+							<nummer>2</nummer>
+							<rdp>20971-0U7</rdp>
+							<domain>FDTCLOUD</domain>
+						</Backofficeplats>							
+			</Backofficeplatser>
 		</Kund>
 	</Kunder>
 </XMLObject>
