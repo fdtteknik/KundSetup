@@ -444,13 +444,13 @@ $name = NameComputer -kundnr $kundnr -dtyp $typ -seq $seq
 
 # Skapa och Lägg RDP på skrivbordet
 # OK - 
-Write-Host "Create-RD"
-Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
+#Write-Host "Create-RD"
+#Create-RDP -dtyp $dtyp -seq $seq -name $name -xml $xmlKund
 
 # TeamViewer Host Konfigurera
 # OK - 
-Write-Host "InstallTeamViewerHost"
-InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
+#Write-Host "InstallTeamViewerHost"
+#InstallTeamViewerHost -tvtoken $xmlKund.tvtoken -name $name
 
 # Install Cert
 # TODO
