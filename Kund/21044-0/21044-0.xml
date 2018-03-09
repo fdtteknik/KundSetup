@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Kunder>
+		<Kund>
+			<Kundnummer>21044-0</Kundnummer>
+			<Server></Server>
+			<RDS>10.3.22.13</RDS>
+			<tvtoken>2223529-gKHel3wekMqjcs9AHfga</tvtoken>
+			<Kassor>
+					<Kassa>
+						<nummer>1</nummer>
+						<rdp>L1272K1</rdp>
+						<domain>Lekia</domain>
+					</Kassa>
+			
+					<Kassa>
+						<nummer>2</nummer>
+						<rdp>L1272K2</rdp>
+						<domain>Lekia</domain>
+					</Kassa>
+			</Kassor>
+
+
+				<Backofficeplatser>
+						<Backofficeplats>
+							<nummer>1</nummer>
+							<rdp>L1272BO1</rdp>
+							<domain>Ackon</domain>
+						</Backofficeplats>
+								
+			</Backofficeplatser>
+		</Kund>
+	</Kunder>
+</XMLObject>
